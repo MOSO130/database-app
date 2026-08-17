@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Item Tracker</title>
+</head>
+<body>
+
+    <h1>Item Tracker</h1>
+
+    <h2>Add an Item</h2>
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Enter item" required>
+        <button type="submit">Add Item</button>
+    </form>
+
+    <hr>
+
+    <h2>Saved Items</h2>
+
+    {% for item in items %}
+        <div>
+            <form action="/edit/{{ item['id'] }}" method="POST">
+                <input type="text" name="name" value="{{ item['name'] }}" required>
+                <button type="submit">Update</button>
+            </form>
+
+            <form action="/delete/{{ item['id'] }}" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        <br>
+    {% endfor %}
+
+</body>
+</html>
