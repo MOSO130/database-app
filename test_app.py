@@ -15,5 +15,5 @@ def test_home_page(client):
 
 
 def test_add_page(client):
-    response = client.get("/add")
+    response = client.post("/add", data={"name": "Test Item"})
     assert response.status_code == 200
